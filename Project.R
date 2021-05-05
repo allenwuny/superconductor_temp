@@ -342,7 +342,3 @@ interval.df = data.frame(inv = c(ridge.range[1], lasso.range, elnet.range, rf.ra
 # Plot a histogram of the response variables
 ggplot(sc) + aes(x = critical_temp) + geom_histogram() + theme_bw() + xlab("Critical Temperature") + ylab("Count")
 
-
-
-set.seed(2)
-sample(28)
