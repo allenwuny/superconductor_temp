@@ -8,7 +8,7 @@ library(randomForest)
 library(reshape2)
 library(gridExtra)
 
-sc = read_csv("superconduct/train.csv")
+sc = read_csv("train.csv")
 
 n = dim(sc)[1]
 p = dim(sc)[2] - 1
