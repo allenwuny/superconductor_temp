@@ -93,47 +93,48 @@ for (i in c(1:loop.size)) {
                         importance=TRUE)
   
   # Calcaulte total sum of squares
-  tss = mean((y.test - mean(y.test))^2)
+  train.tss = mean((y.train - mean(y.train))^2)
+  test.tss = mean((y.test - mean(y.test))^2)
   
   # Calculate R squared value for ridge using training data
   ridge.train.y.hat = predict(ridge.fit, x.train)
   ridge.train.rss = mean((y.train - ridge.train.y.hat)^2)
-  ridge.train.rsq = 1 - (ridge.train.rss/tss)
+  ridge.train.rsq = 1 - (ridge.train.rss/train.tss)
   
   # Calculate R squared value for lasso using training data
   lasso.train.y.hat = predict(lasso.fit, x.train)
   lasso.train.rss = mean((y.train - lasso.train.y.hat)^2)
-  lasso.train.rsq = 1 - (lasso.train.rss/tss)
+  lasso.train.rsq = 1 - (lasso.train.rss/train.tss)
   
   # Calculate R squared value for elastic net using training data
   elnet.train.y.hat = predict(elnet.fit, x.train)
   elnet.train.rss = mean((y.train - elnet.train.y.hat)^2)
-  elnet.train.rsq = 1 - (elnet.train.rss/tss)
+  elnet.train.rsq = 1 - (elnet.train.rss/train.tss)
   
   # Calculate R squared value for random forest using training data
   rf.train.y.hat = predict(rf.fit, x.train)
   rf.train.rss = mean((y.train - rf.train.y.hat)^2)
-  rf.train.rsq = 1 - (rf.train.rss/tss)
+  rf.train.rsq = 1 - (rf.train.rss/train.tss)
   
   # Calculate R squared value for ridge using testing data
   ridge.test.y.hat = predict(ridge.fit, x.test)
   ridge.test.rss = mean((y.test - ridge.test.y.hat)^2)
-  ridge.test.rsq = 1 - (ridge.test.rss/tss)
+  ridge.test.rsq = 1 - (ridge.test.rss/test.tss)
   
   # Calculate R squared value for lasso using testing data
   lasso.test.y.hat = predict(lasso.fit, x.test)
   lasso.test.rss = mean((y.test - lasso.test.y.hat)^2)
-  lasso.test.rsq = 1 - (lasso.test.rss/tss)
+  lasso.test.rsq = 1 - (lasso.test.rss/test.tss)
   
   # Calculate R squared value for elastic net using testing data
   elnet.test.y.hat = predict(elnet.fit, x.test)
   elnet.test.rss = mean((y.test - elnet.test.y.hat)^2)
-  elnet.test.rsq = 1 - (elnet.test.rss/tss)
+  elnet.test.rsq = 1 - (elnet.test.rss/test.tss)
   
   # Calculate R squared value for random forest using testing data
   rf.test.y.hat = predict(rf.fit, x.test)
   rf.test.rss = mean((y.test - rf.test.y.hat)^2)
-  rf.test.rsq = 1 - (rf.test.rss/tss)
+  rf.test.rsq = 1 - (rf.test.rss/test.tss)
 
   # Update the R squared dataframe from the different models
   rsq.df[(i*4-3):(i*4),] = rbind(c(i, "Ridge", ridge.train.rsq, ridge.test.rsq), 
